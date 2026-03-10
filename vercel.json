@@ -5,7 +5,16 @@
             "src": "api/index.php",
             "use": "vercel-php@0.7.4",
             "config": {
-                "excludeFiles": "{resources,storage,tests,ml_service,system_design,project resource}/**"
+                "excludeFiles": [
+                    "node_modules/**",
+                    "public/**",
+                    "resources/**",
+                    "storage/framework/cache/**",
+                    "storage/framework/sessions/**",
+                    "storage/framework/views/**",
+                    "tests/**",
+                    "ml_service/**"
+                ]
             }
         },
         {
