@@ -1,0 +1,17 @@
+{
+    "name": "Relove Market",
+    "short_name": "Relove Market",
+    "start_url": "/relove-market",
+    "background_color": "#6777ef",
+    "description": "A new generation of online marketplace for second-hand items.",
+    "display": "fullscreen",
+    "theme_color": "#6777ef",
+    "icons": [
+        {
+            "src": "relove_market.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any maskable"
+        }
+    ]
+}

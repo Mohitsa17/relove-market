@@ -1,0 +1,148 @@
+<mxfile host="65bd71144e">
+    <diagram id="FXBCcAi5zyy6AUD7ybrZ" name="Page-1">
+        <mxGraphModel dx="1577" dy="563" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" background="#E6E6E6" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="2" value="Buyers: User" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="80" y="160" width="30" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="3" value="Payment Controller" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" parent="1" vertex="1">
+                    <mxGeometry x="400" y="160" width="100" height="590" as="geometry"/>
+                </mxCell>
+                <mxCell id="14" value="" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" parent="3" vertex="1">
+                    <mxGeometry x="45" y="220" width="10" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="4" value="Payment Panel" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" parent="1" vertex="1">
+                    <mxGeometry x="240" y="160" width="100" height="590" as="geometry"/>
+                </mxCell>
+                <mxCell id="8" value="" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" parent="4" vertex="1">
+                    <mxGeometry x="45" y="100" width="10" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="10" value="" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" parent="4" vertex="1">
+                    <mxGeometry x="45" y="150" width="10" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="12" value="" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" parent="4" vertex="1">
+                    <mxGeometry x="45" y="210" width="10" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="29" value="" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" parent="4" vertex="1">
+                    <mxGeometry x="45" y="420" width="10" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="6" value="" style="endArrow=none;dashed=1;html=1;exitX=0.113;exitY=1.003;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" source="27" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="95" y="590" as="sourcePoint"/>
+                        <mxPoint x="94.5" y="250" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="7" value="Payment Database" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" parent="1" vertex="1">
+                    <mxGeometry x="560" y="160" width="100" height="590" as="geometry"/>
+                </mxCell>
+                <mxCell id="15" value="" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" parent="7" vertex="1">
+                    <mxGeometry x="45" y="230" width="10" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="9" value="1. Click &quot;Buy Item&quot; button" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;" parent="1" target="8" edge="1">
+                    <mxGeometry width="80" relative="1" as="geometry">
+                        <mxPoint x="90" y="280" as="sourcePoint"/>
+                        <mxPoint x="170" y="280" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="11" value="2. Fill in payment information" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;" parent="1" target="10" edge="1">
+                    <mxGeometry width="80" relative="1" as="geometry">
+                        <mxPoint x="90" y="330" as="sourcePoint"/>
+                        <mxPoint x="285" y="330" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="13" value="3. Click &quot;Pay&quot; button" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;" parent="1" edge="1">
+                    <mxGeometry width="80" relative="1" as="geometry">
+                        <mxPoint x="90" y="390" as="sourcePoint"/>
+                        <mxPoint x="285" y="390" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="16" style="edgeStyle=none;html=1;curved=0;rounded=0;exitX=1;exitY=1;exitDx=0;exitDy=-5;exitPerimeter=0;" parent="1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="295" y="410" as="sourcePoint"/>
+                        <mxPoint x="445" y="410" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="17" value="4. Verify Info" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="330" y="380" width="90" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="19" value="5. Insert payment data" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="460" y="390" width="130" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="20" style="edgeStyle=none;html=1;curved=0;rounded=0;exitX=1.057;exitY=0.653;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" source="14" target="15" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="460" y="410" as="sourcePoint"/>
+                        <mxPoint x="610" y="410" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="21" style="edgeStyle=none;html=1;curved=0;rounded=0;exitX=0;exitY=1;exitDx=0;exitDy=-5;exitPerimeter=0;dashed=1;" parent="1" source="15" target="14" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="22" value="6. Insert successfully" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="470" y="430" width="130" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="23" style="edgeStyle=none;html=1;curved=0;rounded=0;exitX=0;exitY=1;exitDx=0;exitDy=-5;exitPerimeter=0;dashed=1;" parent="1" source="14" target="12" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="24" value="7. Send success message" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="300" y="440" width="150" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="25" value="" style="shape=note2;boundedLbl=1;whiteSpace=wrap;html=1;size=25;verticalAlign=top;align=left;spacingLeft=5;whiteSpace=wrap;" parent="1" vertex="1">
+                    <mxGeometry x="110" y="410" width="140" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="26" value="E-1 Invalid payment" style="resizeWidth=1;part=1;html=1;strokeColor=none;fillColor=none;align=left;spacingLeft=5;whiteSpace=wrap;" parent="25" vertex="1">
+                    <mxGeometry width="140" height="40" relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="27" value="&lt;b&gt;seq:&lt;/b&gt; E-1" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;" parent="1" vertex="1">
+                    <mxGeometry x="20" y="490" width="670" height="260" as="geometry"/>
+                </mxCell>
+                <mxCell id="28" value="" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" parent="1" vertex="1">
+                    <mxGeometry x="285" y="520" width="10" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="30" value="8. Click &quot;Buy Item&quot; button" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;" parent="1" target="28" edge="1">
+                    <mxGeometry width="80" relative="1" as="geometry">
+                        <mxPoint x="100" y="540" as="sourcePoint"/>
+                        <mxPoint x="285" y="539.41" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="31" value="9. Fill in payment information" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;" parent="1" target="29" edge="1">
+                    <mxGeometry width="80" relative="1" as="geometry">
+                        <mxPoint x="100" y="600" as="sourcePoint"/>
+                        <mxPoint x="285" y="600" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="32" value="" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" parent="1" vertex="1">
+                    <mxGeometry x="285" y="630" width="10" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="33" value="10. Click &quot;Pay&quot; button" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;" parent="1" target="32" edge="1">
+                    <mxGeometry width="80" relative="1" as="geometry">
+                        <mxPoint x="100" y="650" as="sourcePoint"/>
+                        <mxPoint x="285" y="649.5" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="36" style="edgeStyle=none;html=1;curved=0;rounded=0;exitX=0;exitY=1;exitDx=0;exitDy=-5;exitPerimeter=0;dashed=1;" parent="1" source="34" target="32" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="34" value="" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" parent="1" vertex="1">
+                    <mxGeometry x="445" y="627.5" width="10" height="62.5" as="geometry"/>
+                </mxCell>
+                <mxCell id="35" style="edgeStyle=none;html=1;curved=0;rounded=0;exitX=1;exitY=1;exitDx=0;exitDy=-5;exitPerimeter=0;" parent="1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="295" y="660" as="sourcePoint"/>
+                        <mxPoint x="445" y="660" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="37" value="11. Verify Info" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="330" y="630" width="90" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="38" value="12. Verification failed" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="310" y="680" width="130" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="39" value="EPX_13: Payment &amp;amp; Checkout" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;recursiveResize=0;container=1;collapsible=0;width=190;height=35;" parent="1" vertex="1">
+                    <mxGeometry x="-10" y="115" width="740" height="665" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
