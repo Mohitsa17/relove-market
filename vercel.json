@@ -3,7 +3,10 @@
     "builds": [
         {
             "src": "api/index.php",
-            "use": "vercel-php@0.7.4"
+            "use": "vercel-php@0.7.4",
+            "config": {
+                "excludeFiles": "{resources,storage,tests,ml_service,system_design,project resource}/**"
+            }
         },
         {
             "src": "package.json",
