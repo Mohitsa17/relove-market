@@ -7,8 +7,6 @@
             "config": {
                 "excludeFiles": [
                     "node_modules/**",
-                    "public/build/**",
-                    "public/image/**",
                     "resources/css/**",
                     "resources/js/**",
                     "storage/framework/cache/**",
