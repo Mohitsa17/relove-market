@@ -16,28 +16,19 @@
                     "ml_service/**"
                 ]
             }
+        },
+        {
+            "src": "package.json",
+            "use": "@vercel/static-build",
+            "config": {
+                "distDir": "public"
+            }
         }
     ],
     "routes": [
         {
-            "src": "/|/index\\.php",
+            "src": "/(index\\.php)?",
             "dest": "/api/index.php"
-        },
-        {
-            "src": "/build/(.*)",
-            "dest": "/public/build/$1"
-        },
-        {
-            "src": "/image/(.*)",
-            "dest": "/public/image/$1"
-        },
-        {
-            "src": "/storage/(.*)",
-            "dest": "/public/storage/$1"
-        },
-        {
-            "src": "/(manifest\\.json|sw\\.js|offline\\.html|favicon\\.ico|robots\\.txt|.*\\.png|.*\\.ico)",
-            "dest": "/public/$1"
         },
         {
             "handle": "filesystem"
