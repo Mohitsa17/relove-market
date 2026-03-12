@@ -75,7 +75,13 @@ class SellerRegistrationController extends Controller
         ]);
 
         // Fire the event to make the request update in real time on admin dashboard.
-        broadcast(new SellerRegistered($SellerRegistered, "Registered"));
+        // Wrapped in try-catch so registration still works even if Pusher is not configured.
+        try {
+            broadcast(new SellerRegistered($SellerRegistered, "Registered"));
+        } catch (\Exception $e) {
+            // Silently ignore broadcast errors (e.g. Pusher not configured on server)
+            \Illuminate\Support\Facades\Log::warning('SellerRegistered broadcast failed: ' . $e->getMessage());
+        }
 
         return redirect(route("homepage"))
             ->with("successMessage", "Registration successful! Please wait for approval.");
