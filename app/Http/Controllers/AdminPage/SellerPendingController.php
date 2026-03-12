@@ -115,8 +115,8 @@ class SellerPendingController extends Controller
             if ($action === 'Approved') {
                 DB::transaction(function () use ($registration) {
 
-                    // ----- 1. Find the user by email -----
-                    $user = User::where('email', $registration->email)->first();
+                    // ----- 1. Find the user by email (case-insensitive for PostgreSQL) -----
+                    $user = User::whereRaw('LOWER(email) = ?', [strtolower($registration->email)])->first();
                     if (!$user) {
                         throw new \Exception("No user found with email: {$registration->email}");
                     }
@@ -140,7 +140,7 @@ class SellerPendingController extends Controller
                                 $registration->store_state,
                             ]))),
                             'store_phone' => $registration->phone_number,
-                            'store_image' => '', // seller can update later
+                            'store_image' => 'default_store.png', // seller can update later from profile
                         ]
                     );
 
