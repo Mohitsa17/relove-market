@@ -189,4 +189,35 @@ class AdminDashboardController extends Controller
 
         return $totalVisitors > 0 ? round(($totalPurchases / $totalVisitors) * 100, 1) : 0;
     }
+
+    /**
+     * Get recent notifications for the admin (pending sellers + recent orders).
+     */
+    public function getNotifications()
+    {
+        try {
+            $pendingSellers = SellerRegistration::where('status', 'Pending')
+                ->orderBy('created_at', 'desc')
+                ->limit(10)
+                ->get()
+                ->map(function ($reg) {
+                    return [
+                        'id'      => $reg->registration_id,
+                        'type'    => 'seller_registration',
+                        'message' => "{$reg->name} applied to become a seller ({$reg->store_name})",
+                        'time'    => $reg->created_at?->diffForHumans(),
+                    ];
+                });
+
+            return response()->json([
+                'notifications' => $pendingSellers,
+                'unread_count'  => $pendingSellers->count(),
+            ]);
+        } catch (\Exception $e) {
+            return response()->json([
+                'notifications' => [],
+                'unread_count'  => 0,
+            ]);
+        }
+    }
 }
