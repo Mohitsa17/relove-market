@@ -100,7 +100,10 @@ class SellerPendingController extends Controller
 
     /**
      * Approve or Reject a seller registration.
-     * Action buttons call: POST /api/admin/pending-seller/{id}/action { action: 'Approved'|'Rejected' }
+     * On Approval:
+     *   1. creates a seller_stores row
+     *   2. creates a sellers row (seller_id, store_id, seller_email, etc.)
+     *   3. updates the user: sets seller_id and upgrades role_id to 'ReLo-S0001' (seller)
      */
     public function handleAction(Request $request, $id)
     {
@@ -111,32 +114,59 @@ class SellerPendingController extends Controller
 
             if ($action === 'Approved') {
                 DB::transaction(function () use ($registration) {
+
+                    // ----- 1. Find the user by email -----
+                    $user = User::where('email', $registration->email)->first();
+                    if (!$user) {
+                        throw new \Exception("No user found with email: {$registration->email}");
+                    }
+
+                    // ----- 2. Derive seller_id and store_id from registration_id -----
+                    // registration_id = SELLER00001 → extracted number → SELLER00001 / STORE00001
+                    $numStr   = str_replace('SELLER', '', $registration->registration_id);
+                    $num      = (int) $numStr;
+                    $sellerId = 'SELLER' . str_pad($num, 5, '0', STR_PAD_LEFT);
+                    $storeId  = 'STORE'  . str_pad($num, 5, '0', STR_PAD_LEFT);
+
+                    // ----- 3. Create seller_stores row -----
+                    \App\Models\SellerStore::updateOrCreate(
+                        ['store_id' => $storeId],
+                        [
+                            'store_name'        => $registration->store_name,
+                            'store_description' => $registration->store_description ?? '',
+                            'store_address'     => trim(implode(', ', array_filter([
+                                $registration->store_address,
+                                $registration->store_city,
+                                $registration->store_state,
+                            ]))),
+                            'store_phone' => $registration->phone_number,
+                            'store_image' => '', // seller can update later
+                        ]
+                    );
+
+                    // ----- 4. Create sellers row -----
+                    \App\Models\Seller::updateOrCreate(
+                        ['seller_id' => $sellerId],
+                        [
+                            'seller_name'  => $registration->name,
+                            'seller_email' => $registration->email,
+                            'seller_phone' => $registration->phone_number,
+                            'store_id'     => $storeId,
+                            'business_id'  => $registration->business_id ?? 'BT001',
+                            'is_verified'  => true,
+                        ]
+                    );
+
+                    // ----- 5. Link user to seller + upgrade role -----
+                    $user->seller_id = $sellerId;
+                    $user->role_id   = 'ReLo-S0001'; // seller role (seeded in create_table_role migration)
+                    $user->save();
+
+                    // ----- 6. Mark registration as approved -----
                     $registration->status = 'Approved';
                     $registration->save();
-
-                    // Upgrade the user account to seller role
-                    $user = User::where('email', $registration->email)->first();
-                    if ($user) {
-                        $sellerRole = \App\Models\Role::where('role_name', 'seller')->first();
-                        if ($sellerRole) {
-                            $user->role_id = $sellerRole->id;
-                            $user->save();
-                        }
-
-                        // Create seller profile if model exists
-                        if (class_exists(\App\Models\Seller::class)) {
-                            \App\Models\Seller::updateOrCreate(
-                                ['user_id' => $user->id],
-                                [
-                                    'seller_name'   => $registration->store_name,
-                                    'phone_number'  => $registration->phone_number,
-                                    'store_address' => $registration->store_address,
-                                    'business_id'   => $registration->business_id,
-                                ]
-                            );
-                        }
-                    }
                 });
+
             } elseif ($action === 'Rejected') {
                 $registration->status = 'Rejected';
                 $registration->save();
@@ -150,7 +180,7 @@ class SellerPendingController extends Controller
                 'status'         => $registration->status,
             ]);
         } catch (\Exception $e) {
-            Log::error('Error handling seller action: ' . $e->getMessage());
+            Log::error('Seller handleAction error: ' . $e->getMessage() . "\n" . $e->getTraceAsString());
             return response()->json([
                 'error'   => 'Failed to process action',
                 'message' => $e->getMessage(),
