@@ -26,8 +26,8 @@ class SellerRegistrationController extends Controller
 
             // Step 2: Store Info
             'storeName' => ['required', 'string'],
-            'verificationType' => ['required', 'string', 'in:nric,passport,business_registration,driving_license'],
-            'verificationImage' => ['required', 'image', 'mimes:jpeg,jpg,png,webp', 'max:5120'], // 5MB max
+            'verificationType' => ['required', 'string', 'in:aadhaar,pan,driving_license,passport,voter_id'],
+            'verificationImage' => ['required', 'image', 'mimes:jpeg,jpg,png,webp', 'max:2048'], // 2MB max (compressed client-side)
             'storeDescription' => ['required', 'string'],
             'storeAddress' => ['required', 'string'],
             'storeCity' => ['required', 'string'],

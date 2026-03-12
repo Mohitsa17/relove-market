@@ -1,0 +1,213 @@
+<mxfile host="65bd71144e">
+    <diagram id="gLbzvOFXd3KA33hpLtFU" name="Page-1">
+        <mxGraphModel dx="750" dy="1663" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" background="#E6E6E6" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="2" value="Buyers / Sellers : Users" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" parent="1" vertex="1">
+                    <mxGeometry x="160" y="40" width="40" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="13" value="" style="endArrow=none;dashed=1;html=1;exitX=0.137;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" source="76" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="180" y="800" as="sourcePoint"/>
+                        <mxPoint x="179.5" y="140" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="16" value="1. Insert Data" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="230" y="140" width="80" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="21" value="Register Panel" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};" parent="1" vertex="1">
+                    <mxGeometry x="330" y="40" width="100" height="700" as="geometry"/>
+                </mxCell>
+                <mxCell id="27" value="" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" parent="21" vertex="1">
+                    <mxGeometry x="45" y="120" width="10" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="22" value="Register Controller" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};" parent="1" vertex="1">
+                    <mxGeometry x="480" y="40" width="100" height="700" as="geometry"/>
+                </mxCell>
+                <mxCell id="55" value="" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" parent="22" vertex="1">
+                    <mxGeometry x="45" y="130" width="10" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="23" value="User Database" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};" parent="1" vertex="1">
+                    <mxGeometry x="650" y="40" width="100" height="700" as="geometry"/>
+                </mxCell>
+                <mxCell id="88" value="" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" parent="23" vertex="1">
+                    <mxGeometry x="45" y="620" width="10" height="25" as="geometry"/>
+                </mxCell>
+                <mxCell id="28" value="" style="html=1;verticalAlign=bottom;labelBackgroundColor=none;endArrow=block;endFill=1;" parent="1" target="27" edge="1">
+                    <mxGeometry width="160" relative="1" as="geometry">
+                        <mxPoint x="180" y="170" as="sourcePoint"/>
+                        <mxPoint x="370" y="169" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="29" value="" style="html=1;verticalAlign=bottom;labelBackgroundColor=none;endArrow=block;endFill=1;" parent="1" target="55" edge="1">
+                    <mxGeometry width="160" relative="1" as="geometry">
+                        <mxPoint x="385" y="180" as="sourcePoint"/>
+                        <mxPoint x="520" y="180" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="30" value="2. Verify Data" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="410" y="150" width="80" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="31" value="" style="html=1;verticalAlign=bottom;labelBackgroundColor=none;endArrow=block;endFill=1;entryX=0;entryY=0;entryDx=0;entryDy=5;entryPerimeter=0;" parent="1" source="55" target="56" edge="1">
+                    <mxGeometry width="160" relative="1" as="geometry">
+                        <mxPoint x="540" y="190" as="sourcePoint"/>
+                        <mxPoint x="670" y="190" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="620" y="190"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="32" value="3. Insert data to database" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="550" y="160" width="140" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="33" value="" style="shape=note2;boundedLbl=1;whiteSpace=wrap;html=1;size=25;verticalAlign=top;align=left;spacingLeft=5;whiteSpace=wrap;" parent="1" vertex="1">
+                    <mxGeometry x="210" y="180" width="140" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="34" value="E-1 Invalid Data" style="resizeWidth=1;part=1;html=1;strokeColor=none;fillColor=none;align=left;spacingLeft=5;whiteSpace=wrap;" parent="33" vertex="1">
+                    <mxGeometry width="140" height="25" relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="35" value="" style="html=1;verticalAlign=bottom;labelBackgroundColor=none;endArrow=open;endFill=0;dashed=1;" parent="1" edge="1">
+                    <mxGeometry width="160" relative="1" as="geometry">
+                        <mxPoint x="695" y="199.58" as="sourcePoint"/>
+                        <mxPoint x="535" y="199.58" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="36" value="4. Insert Successfully" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="550" y="200" width="140" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="37" value="" style="html=1;verticalAlign=bottom;labelBackgroundColor=none;endArrow=open;endFill=0;dashed=1;" parent="1" source="55" edge="1">
+                    <mxGeometry width="160" relative="1" as="geometry">
+                        <mxPoint x="520" y="210" as="sourcePoint"/>
+                        <mxPoint x="385.5" y="210" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="500.5" y="210"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="38" value="5. Register Successfully" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="390" y="220" width="140" height="10" as="geometry"/>
+                </mxCell>
+                <mxCell id="42" value="&lt;b&gt;seq&lt;/b&gt;: E-1" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;recursiveResize=0;container=1;collapsible=0;width=170;align=center;" parent="1" vertex="1">
+                    <mxGeometry x="85" y="310" width="645" height="210" as="geometry"/>
+                </mxCell>
+                <mxCell id="48" value="" style="html=1;verticalAlign=bottom;labelBackgroundColor=none;endArrow=block;endFill=1;" parent="42" target="58" edge="1">
+                    <mxGeometry width="160" relative="1" as="geometry">
+                        <mxPoint x="95" y="84" as="sourcePoint"/>
+                        <mxPoint x="285" y="84" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="49" value="6. Insert Data" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="42" vertex="1">
+                    <mxGeometry x="155" y="50" width="80" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="51" value="7. Verify Data" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="42" vertex="1">
+                    <mxGeometry x="335" y="80" width="80" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="54" value="8. Invalid data" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="42" vertex="1">
+                    <mxGeometry x="335" y="130" width="80" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="65" value="" style="edgeStyle=none;html=1;curved=0;rounded=0;" parent="42" target="61" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="300" y="99.58" as="sourcePoint"/>
+                        <mxPoint x="347.5" y="99.58" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="58" value="" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" parent="42" vertex="1">
+                    <mxGeometry x="290" y="70" width="10" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="67" value="" style="edgeStyle=none;html=1;curved=0;rounded=0;entryX=0;entryY=0;entryDx=0;entryDy=5;entryPerimeter=0;" parent="42" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="95" y="174.58" as="sourcePoint"/>
+                        <mxPoint x="290" y="174.58" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="60" value="" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" parent="42" vertex="1">
+                    <mxGeometry x="290" y="160" width="10" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="64" value="" style="edgeStyle=none;html=1;curved=0;rounded=0;dashed=1;endArrow=open;endFill=0;entryX=1;entryY=1;entryDx=0;entryDy=-5;entryPerimeter=0;" parent="42" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="440" y="119.58" as="sourcePoint"/>
+                        <mxPoint x="300" y="119.58" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="61" value="" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" parent="42" vertex="1">
+                    <mxGeometry x="440" y="80" width="10" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="68" value="9. Re-enter data" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="42" vertex="1">
+                    <mxGeometry x="142.5" y="140" width="105" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="57" value="" style="html=1;verticalAlign=bottom;labelBackgroundColor=none;endArrow=open;endFill=0;dashed=1;" parent="1" target="56" edge="1">
+                    <mxGeometry width="160" relative="1" as="geometry">
+                        <mxPoint x="702.25" y="199.58" as="sourcePoint"/>
+                        <mxPoint x="535" y="200" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="56" value="" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" parent="1" vertex="1">
+                    <mxGeometry x="695" y="185" width="10" height="25" as="geometry"/>
+                </mxCell>
+                <mxCell id="74" value="" style="shape=note2;boundedLbl=1;whiteSpace=wrap;html=1;size=25;verticalAlign=top;align=left;spacingLeft=5;whiteSpace=wrap;" parent="1" vertex="1">
+                    <mxGeometry x="210" y="230" width="140" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="75" value="A-1 Register with Google" style="resizeWidth=1;part=1;html=1;strokeColor=none;fillColor=none;align=left;spacingLeft=5;whiteSpace=wrap;" parent="74" vertex="1">
+                    <mxGeometry width="140" height="40" relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="76" value="&lt;b&gt;seq&lt;/b&gt;: A-1" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;recursiveResize=0;container=1;collapsible=0;width=170;align=center;" parent="1" vertex="1">
+                    <mxGeometry x="85" y="560" width="680" height="180" as="geometry"/>
+                </mxCell>
+                <mxCell id="77" value="" style="html=1;verticalAlign=bottom;labelBackgroundColor=none;endArrow=block;endFill=1;" parent="76" target="82" edge="1">
+                    <mxGeometry width="160" relative="1" as="geometry">
+                        <mxPoint x="95" y="84" as="sourcePoint"/>
+                        <mxPoint x="285" y="84" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="78" value="10. Click &quot;Register with Google&quot; button" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="76" vertex="1">
+                    <mxGeometry x="120" y="50" width="150" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="79" value="11. Verify Data" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="76" vertex="1">
+                    <mxGeometry x="335" y="80" width="80" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="80" value="14. Register Successfully" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="76" vertex="1">
+                    <mxGeometry x="297.5" y="140" width="152.5" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="81" value="" style="edgeStyle=none;html=1;curved=0;rounded=0;" parent="76" target="86" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="300" y="99.58" as="sourcePoint"/>
+                        <mxPoint x="347.5" y="99.58" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="82" value="" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" parent="76" vertex="1">
+                    <mxGeometry x="290" y="70" width="10" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="85" value="" style="edgeStyle=none;html=1;curved=0;rounded=0;dashed=1;endArrow=open;endFill=0;entryX=1;entryY=1;entryDx=0;entryDy=-5;entryPerimeter=0;" parent="76" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="440" y="129.43" as="sourcePoint"/>
+                        <mxPoint x="300" y="129.43" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="86" value="" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" parent="76" vertex="1">
+                    <mxGeometry x="440" y="80" width="10" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="91" value="" style="edgeStyle=none;html=1;curved=0;rounded=0;dashed=1;endArrow=open;endFill=0;" parent="76" source="88" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="605" y="120" as="sourcePoint"/>
+                        <mxPoint x="449.9985714285714" y="120" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="92" value="12. Insert data to database" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="76" vertex="1">
+                    <mxGeometry x="462.5" y="80" width="145" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="93" value="13. Insert Successfully" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="76" vertex="1">
+                    <mxGeometry x="465" y="120" width="140" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="90" value="" style="edgeStyle=none;html=1;curved=0;rounded=0;entryX=0;entryY=0;entryDx=0;entryDy=5;entryPerimeter=0;" parent="1" source="86" target="88" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="690" y="665" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="94" value="EPX_01: User Registration" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;recursiveResize=0;container=1;collapsible=0;width=160;" parent="1" vertex="1">
+                    <mxGeometry x="45" y="-10" width="760" height="780" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>

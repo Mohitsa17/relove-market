@@ -12,9 +12,9 @@ import {
 import Swal from "sweetalert2";
 
 import ReactCountryFlag from "react-country-flag";
-import malaysiaLocations from "./malaysia-location.json";
-import { MalaysiaStateModal } from "./MalaysiaStateModal";
-import { MalaysiaCityModal } from "./MalaysiaCityModal";
+import indiaLocations from "./malaysia-location.json";
+import { IndiaStateModal } from "./IndiaStateModal";
+import { IndiaCityModal } from "./IndiaCityModal";
 import { BusinessTypeModal } from "./BusinessTypeModal";
 
 // SweetAlert configuration
@@ -86,8 +86,8 @@ export function SellerRegisterForm({ step, setStep, list_business }) {
     };
 
     // Use data from JSON file
-    const malaysianStates = malaysiaLocations.states;
-    const malaysianCitiesByState = malaysiaLocations.citiesByState;
+    const indianStates = indiaLocations.states;
+    const indianCitiesByState = indiaLocations.citiesByState;
 
     const { flash, errors } = usePage().props;
 
@@ -106,23 +106,27 @@ export function SellerRegisterForm({ step, setStep, list_business }) {
     // File input ref
     const fileInputRef = useRef(null);
 
-    // Malaysian verification ID types
+    // Indian verification ID types
     const verificationTypes = [
         {
-            id: "nric",
-            name: "Malaysian NRIC",
+            id: "aadhaar",
+            name: "Aadhaar Card",
+        },
+        {
+            id: "pan",
+            name: "PAN Card",
+        },
+        {
+            id: "driving_license",
+            name: "Driving License",
         },
         {
             id: "passport",
             name: "Passport",
         },
         {
-            id: "business_registration",
-            name: "Business Registration Number",
-        },
-        {
-            id: "driving_license",
-            name: "Driving License",
+            id: "voter_id",
+            name: "Voter ID Card",
         },
     ];
 
@@ -149,9 +153,9 @@ export function SellerRegisterForm({ step, setStep, list_business }) {
     useEffect(() => {
         if (
             formData.storeState &&
-            malaysianCitiesByState[formData.storeState]
+            indianCitiesByState[formData.storeState]
         ) {
-            setCities(malaysianCitiesByState[formData.storeState]);
+            setCities(indianCitiesByState[formData.storeState]);
         } else {
             setCities([]);
         }
@@ -239,19 +243,19 @@ export function SellerRegisterForm({ step, setStep, list_business }) {
             }
         }
 
-        // Updated validation for Malaysian phone number
+        // Validation for Indian phone number (10-digit mobile)
         if (step === 1 && formData.phoneNumber) {
-            const malaysiaPhoneRegex = /^(\+?60|0)?[1-9][0-9]{7,9}$/;
+            const indiaPhoneRegex = /^[6-9][0-9]{9}$/;
             const cleanedPhone = formData.phoneNumber.replace(/\D/g, "");
 
-            if (!malaysiaPhoneRegex.test(cleanedPhone)) {
+            if (!indiaPhoneRegex.test(cleanedPhone)) {
                 setHighlightedField("phoneNumber");
-                setErrorMessage("Please enter a valid Malaysian phone number");
+                setErrorMessage("Please enter a valid Indian phone number");
 
                 showAlert(
                     "error",
                     "Invalid Phone Number",
-                    "Please enter a valid Malaysian phone number (e.g., 123456789, 0123456789)."
+                    "Please enter a valid 10-digit Indian mobile number starting with 6, 7, 8 or 9 (e.g., 9876543210)."
                 );
                 return false;
             }
@@ -342,25 +346,33 @@ export function SellerRegisterForm({ step, setStep, list_business }) {
         }
     };
 
-    // Handle image capture/upload
-    const handleImageUpload = (e) => {
+    // Handle image capture/upload with automatic compression
+    const handleImageUpload = async (e) => {
         const file = e.target.files[0];
         if (file) {
-            setFormData({ ...formData, verificationImage: file });
-            setSelectedFileName(file.name);
+            Swal.fire({
+                title: "Processing Image...",
+                text: "Compressing your document for upload.",
+                allowOutsideClick: false,
+                didOpen: () => Swal.showLoading(),
+            });
 
-            // Create preview
+            const compressed = await compressImage(file, 1024); // max 1MB
+            setFormData({ ...formData, verificationImage: compressed });
+            setSelectedFileName(compressed.name);
+
+            // Create preview from the compressed file
             const reader = new FileReader();
-            reader.onload = (e) => {
-                setImagePreview(e.target.result);
+            reader.onload = (ev) => {
+                setImagePreview(ev.target.result);
             };
-            reader.readAsDataURL(file);
+            reader.readAsDataURL(compressed);
 
-            // Show success message for image upload
+            Swal.close();
             showAlert(
                 "success",
                 "Image Uploaded",
-                "Your verification document has been uploaded successfully."
+                "Your verification document has been uploaded and optimized successfully."
             );
         }
 
@@ -396,32 +408,76 @@ export function SellerRegisterForm({ step, setStep, list_business }) {
         }
     };
 
-    // Format phone number as user types and ensure it starts with 0 when stored
+    // Compress image using canvas API to keep payload under Vercel's 4.5MB limit
+    const compressImage = (file, maxSizeKB = 1024) => {
+        return new Promise((resolve) => {
+            const reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onload = (event) => {
+                const img = new Image();
+                img.src = event.target.result;
+                img.onload = () => {
+                    const canvas = document.createElement("canvas");
+                    let width = img.width;
+                    let height = img.height;
+
+                    // Scale down if too large
+                    const MAX_DIM = 1200;
+                    if (width > MAX_DIM || height > MAX_DIM) {
+                        if (width > height) {
+                            height = Math.round((height * MAX_DIM) / width);
+                            width = MAX_DIM;
+                        } else {
+                            width = Math.round((width * MAX_DIM) / height);
+                            height = MAX_DIM;
+                        }
+                    }
+
+                    canvas.width = width;
+                    canvas.height = height;
+                    const ctx = canvas.getContext("2d");
+                    ctx.drawImage(img, 0, 0, width, height);
+
+                    let quality = 0.8;
+                    const tryCompress = () => {
+                        canvas.toBlob(
+                            (blob) => {
+                                if (blob.size > maxSizeKB * 1024 && quality > 0.3) {
+                                    quality -= 0.1;
+                                    tryCompress();
+                                } else {
+                                    const compressedFile = new File(
+                                        [blob],
+                                        file.name,
+                                        { type: "image/jpeg", lastModified: Date.now() }
+                                    );
+                                    resolve(compressedFile);
+                                }
+                            },
+                            "image/jpeg",
+                            quality
+                        );
+                    };
+                    tryCompress();
+                };
+            };
+        });
+    };
+
+    // Format phone number for Indian (+91) display
     const handlePhoneChange = (e) => {
-        const value = e.target.value.replace(/\D/g, "");
-        let formattedValue = value;
-        let storedValue = value;
-
-        if (value.startsWith("60")) {
-            storedValue = "0" + value.substring(2);
-            formattedValue = "+60 " + value.substring(2);
-        } else if (value.length > 0 && !value.startsWith("0")) {
-            storedValue = "0" + value;
-            formattedValue = "+60 " + value;
-        } else if (value.startsWith("0")) {
-            storedValue = value;
-            formattedValue = "+60 " + value.substring(1);
+        // Only keep digits, strip +91 prefix if typed
+        let raw = e.target.value.replace(/\D/g, "");
+        // If the user typed 91 prefix, strip it
+        if (raw.startsWith("91") && raw.length > 10) {
+            raw = raw.substring(2);
         }
+        // Limit to 10 digits
+        const digits = raw.slice(0, 10);
 
-        if (formattedValue.length > 6) {
-            formattedValue = formattedValue
-                .replace(/(\+60\s)(\d{2,4})(\d{3})(\d{0,4})/, "$1$2 $3 $4")
-                .trim();
-        }
+        setFormData({ ...formData, phoneNumber: digits });
 
-        setFormData({ ...formData, phoneNumber: storedValue });
-
-        if (highlightedField === "phoneNumber" && value !== "") {
+        if (highlightedField === "phoneNumber" && digits !== "") {
             setHighlightedField("");
             setErrorMessage("");
         }
@@ -577,7 +633,7 @@ export function SellerRegisterForm({ step, setStep, list_business }) {
     }, [errors]);
 
     // Filter options based on search term
-    const filteredStates = malaysianStates.filter((state) =>
+    const filteredStates = indianStates.filter((state) =>
         state.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
@@ -589,21 +645,18 @@ export function SellerRegisterForm({ step, setStep, list_business }) {
         business.business_type.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
-    // Format phone number for display (with +60 prefix)
+    // Format phone number for display (with +91 prefix)
     const formatPhoneForDisplay = (phone) => {
         if (!phone) return "";
-
-        const cleaned = phone.replace(/\D/g, "");
-        if (cleaned.startsWith("0")) {
-            return "+60 " + cleaned.substring(1);
-        }
-        return "+60 " + cleaned;
+        const digits = phone.replace(/\D/g, "").slice(0, 10);
+        if (digits.length === 0) return "";
+        return "+91 " + digits;
     };
 
     return (
         <div className="w-full">
             {/* Modal Components */}
-            <MalaysiaStateModal
+            <IndiaStateModal
                 isOpen={showStateModal}
                 onClose={closeStateModal}
                 searchTerm={searchTerm}
@@ -612,7 +665,7 @@ export function SellerRegisterForm({ step, setStep, list_business }) {
                 onStateSelect={handleStateSelect}
             />
 
-            <MalaysiaCityModal
+            <IndiaCityModal
                 isOpen={showCityModal}
                 onClose={closeCityModal}
                 searchTerm={searchTerm}
@@ -684,25 +737,25 @@ export function SellerRegisterForm({ step, setStep, list_business }) {
 
                         <div>
                             <label className="block text-sm font-medium text-gray-700 mb-2">
-                                Phone Number (Malaysia) *
+                                Phone Number (India) *
                             </label>
                             <div className="relative">
                                 <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                                     <ReactCountryFlag
-                                        countryCode="MY"
+                                        countryCode="IN"
                                         svg
                                         style={{
                                             width: "1.5em",
                                             height: "1.5em",
                                             borderRadius: "3px",
                                         }}
-                                        title="Malaysia"
+                                        title="India"
                                     />
                                 </div>
                                 <input
                                     type="tel"
                                     name="phoneNumber"
-                                    placeholder="123456789"
+                                    placeholder="9876543210"
                                     autoComplete="off"
                                     value={formatPhoneForDisplay(
                                         formData.phoneNumber
@@ -717,8 +770,7 @@ export function SellerRegisterForm({ step, setStep, list_business }) {
                                 />
                             </div>
                             <p className="text-xs text-gray-500 mt-1">
-                                Enter your Malaysian phone number without the
-                                leading 0 (e.g., 123456789)
+                                Enter your 10-digit Indian mobile number (e.g., 9876543210)
                             </p>
                         </div>
                     </div>
