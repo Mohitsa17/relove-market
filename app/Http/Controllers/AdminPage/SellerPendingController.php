@@ -128,34 +128,37 @@ class SellerPendingController extends Controller
                     $sellerId = 'SELLER' . str_pad($num, 5, '0', STR_PAD_LEFT);
                     $storeId  = 'STORE'  . str_pad($num, 5, '0', STR_PAD_LEFT);
 
-                    // ----- 3. Create seller_stores row -----
-                    \App\Models\SellerStore::updateOrCreate(
-                        ['store_id' => $storeId],
-                        [
-                            'store_name'        => $registration->store_name,
-                            'store_description' => $registration->store_description ?? '',
-                            'store_address'     => trim(implode(', ', array_filter([
-                                $registration->store_address,
-                                $registration->store_city,
-                                $registration->store_state,
-                            ]))),
-                            'store_phone' => $registration->phone_number,
-                            'store_image' => 'default_store.png', // seller can update later from profile
-                        ]
-                    );
+                    // ----- 3. Create/update seller_stores row (safe for PostgreSQL string PKs) -----
+                    $storeRecord = \App\Models\SellerStore::find($storeId);
+                    if (!$storeRecord) {
+                        $storeRecord = new \App\Models\SellerStore();
+                        $storeRecord->store_id = $storeId;
+                    }
+                    $storeRecord->store_name        = $registration->store_name;
+                    $storeRecord->store_description = $registration->store_description ?? '';
+                    $storeRecord->store_address     = trim(implode(', ', array_filter([
+                        $registration->store_address,
+                        $registration->store_city,
+                        $registration->store_state,
+                    ])));
+                    $storeRecord->store_phone = $registration->phone_number;
+                    $storeRecord->store_image = 'default_store.png';
+                    $storeRecord->save();
 
-                    // ----- 4. Create sellers row -----
-                    \App\Models\Seller::updateOrCreate(
-                        ['seller_id' => $sellerId],
-                        [
-                            'seller_name'  => $registration->name,
-                            'seller_email' => $registration->email,
-                            'seller_phone' => $registration->phone_number,
-                            'store_id'     => $storeId,
-                            'business_id'  => $registration->business_id ?? 'BT001',
-                            'is_verified'  => true,
-                        ]
-                    );
+                    // ----- 4. Create/update sellers row (safe for PostgreSQL string PKs) -----
+                    $sellerRecord = \App\Models\Seller::find($sellerId);
+                    if (!$sellerRecord) {
+                        $sellerRecord = new \App\Models\Seller();
+                        $sellerRecord->seller_id = $sellerId;
+                    }
+                    $sellerRecord->seller_name  = $registration->name;
+                    $sellerRecord->seller_email = strtolower($registration->email);
+                    $sellerRecord->seller_phone = $registration->phone_number;
+                    $sellerRecord->store_id     = $storeId;
+                    $sellerRecord->business_id  = $registration->business_id ?? 'BUS001';
+                    $sellerRecord->is_verified  = true;
+                    $sellerRecord->save();
+
 
                     // ----- 5. Link user to seller + upgrade role -----
                     $user->seller_id = $sellerId;
